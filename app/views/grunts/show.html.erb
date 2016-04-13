@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h3><small><%= @grunt.zombie.name %> says: </small><%= @grunt.message %></h3>
+  <%= link_to 'Edit', edit_grunt_path(@grunt), class: 'btn btn-primary btn-sm' %>
+</div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Posted</th>
+      <th>Zombie</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grunt.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.created_at.to_s('%B %d, %Y %l:%M %p') %></td>
+        <td><%= link_to comment.zombie.name, comment.zombie %></td>
+        <td><%= comment.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

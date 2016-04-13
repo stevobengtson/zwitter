@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Graveyards</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @graveyards.each do |graveyard| %>
+      <tr>
+        <td><%= graveyard.name %></td>
+        <td><%= graveyard.address %></td>
+        <td>
+					<div class="btn-group">
+						<%= link_to 'Show', graveyard, class: 'btn btn-xs btn-success' %>
+        		<%= link_to 'Edit', edit_graveyard_path(graveyard), class: 'btn btn-xs btn-warning' %>
+        		<%= link_to 'Destroy', graveyard, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %>
+					</div>
+				</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+	<%= page_entries_info @graveyards %>
+</div>
+<div class="row">
+	<%= paginate @graveyards %>
+</div>
+<div class="row">
+	<%= link_to 'New Graveyard', new_graveyard_path, class: 'btn btn-primary' %>
+</div>

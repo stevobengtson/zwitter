@@ -1,0 +1,25 @@
+<%= form_for(@grunt) do |f| %>
+  <% if @grunt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grunt.errors.count, "error") %> prohibited this grunt from being saved:</h2>
+
+      <ul>
+      <% @grunt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_field :message %>
+  </div>
+  <div class="field">
+    <%= f.label :zombie_id %><br>
+    <%= f.collection_select :zombie_id, Zombie.all, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
